@@ -1,0 +1,26 @@
+name: Jessica Magno's Workflow Codespace
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *'  # Para executar a cada hora
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fazer checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Garantir ambiente Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Criar e executar script Python
+        run: |
+          echo 'print("Concluindo mais uma tarefa do curso GitHub 4 Women")' > script.py
+          python3 script.py
